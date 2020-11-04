@@ -8,6 +8,14 @@
 composer require hyperf/amqp
 ```
 
+## 配置文件amqp.php
+
+手动添加该文件，或者发布配置自动生成
+
+```bash
+php bin/hyperf vendor:publish hyperf/amqp
+```
+
 ## 默认配置
 
 |       配置       |  类型  |  默认值   |      备注      |
