@@ -141,18 +141,19 @@ php bin/hyperf.php gen:amqp-consumer DemoConsumer
 
 declare(strict_types=1);
 
-namespace App\Amqp\Consumers;
+namespace App\Amqp\Consumer;
 
+use Hyperf\Amqp\Result;
 use Hyperf\Amqp\Annotation\Consumer;
 use Hyperf\Amqp\Message\ConsumerMessage;
-use Hyperf\Amqp\Result;
+use PhpAmqpLib\Message\AMQPMessage;
 
 /**
  * @Consumer(exchange="hyperf", routingKey="hyperf", queue="hyperf", nums=1)
  */
 class DemoConsumer extends ConsumerMessage
 {
-    public function consume($data): string
+    public function consumeMessage($data, AMQPMessage $message): string
     {
         print_r($data);
         return Result::ACK;
@@ -172,18 +173,19 @@ class DemoConsumer extends ConsumerMessage
 
 declare(strict_types=1);
 
-namespace App\Amqp\Consumers;
+namespace App\Amqp\Consumer;
 
+use Hyperf\Amqp\Result;
 use Hyperf\Amqp\Annotation\Consumer;
 use Hyperf\Amqp\Message\ConsumerMessage;
-use Hyperf\Amqp\Result;
+use PhpAmqpLib\Message\AMQPMessage;
 
 /**
  * @Consumer(exchange="hyperf", routingKey="hyperf", queue="hyperf", nums=1, enable=false)
  */
 class DemoConsumer extends ConsumerMessage
 {
-    public function consume($data): string
+    public function consumeMessage($data, AMQPMessage $message): string
     {
         print_r($data);
         return Result::ACK;
